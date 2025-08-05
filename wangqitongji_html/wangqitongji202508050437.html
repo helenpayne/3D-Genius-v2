@@ -1,0 +1,88 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TrendHunter Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1, h2, h3 { color: #333; }
+            ul { padding-left: 20px; }
+            p, li { line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; }
+            .container { max-width: 800px; margin: auto; }
+            .highlight { background-color: #f0f8ff; padding: 10px; border-radius: 5px; }
+            #passwordBox { margin-top: 50px; text-align: center; }
+            #passwordInput { padding: 10px; font-size: 16px; width: 200px; margin-bottom: 10px; }
+            #errorMessage { color: red; display: none; }
+        </style>
+        <script>
+            function checkPassword() {
+                let inputPassword = document.getElementById('passwordInput').value;
+                if (inputPassword !== "6") {
+                    document.getElementById('errorMessage').style.display = 'block';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('report-content').style.display = 'block';
+                    document.getElementById('passwordBox').style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="passwordBox">
+            <h2>请输入密码以查看内容：</h2>
+            <input type="password" id="passwordInput" placeholder="输入密码">
+            <br>
+            <button onclick="checkPassword()">确认</button>
+            <p id="errorMessage">密码错误！请重试。</p>
+        </div>
+        
+        <div id="report-content" class="container" style="display: none;">
+            <h1>推算报告</h1>
+            <p>今日日期：2025-08-05</p>
+            <p>所属月份：8</p>
+            <p>所属星期几：周二</p>
+            <p>上期开奖号码：[4, 4, 4]</p>
+            
+            <h2>一、推算下期开奖号码结果：</h2>
+            <ul>
+                <li>近5期推算：2,7,1</li>
+                <li>往年今日推算：7,6,5</li>
+                <li>往月今日推算：9,4,6</li>
+                <li>以往同周推算：3,9,5</li>
+                <li>历史数位： 978,979,975,938,939,935,968,969,965,478,479,475,438,439,435,468,469,465,178,179,175,138,139,135,168,169,165</li>
+            </ul>
+            
+            <h2>二、历史统计简报数据</h2>
+            <h3>1、根据上期号码的历史数字位置统计</h3>
+            <p class="highlight">百位预测：['9: 86次', '4: 85次', '1: 83次']</p>
+            <p class="highlight">十位预测：['7: 87次', '3: 87次', '6: 86次']</p>
+            <p class="highlight">个位预测：['8: 87次', '9: 80次', '5: 77次']</p>
+            
+            <h3>2、“最近5期”数字频率：</h3>
+            <p>频率排序：0,4,9,3,2,7,1,5</p>
+            <p>频率次数：['0: 4次', '4: 3次', '9: 2次', '3: 2次', '2: 1次', '7: 1次', '1: 1次', '5: 1次']</p>
+            
+            <h3>3、“往年今日”数字频率：</h3>
+            <p>频率排序：4,0,2,8,5,3,1,9,7,6</p>
+            <p>频率次数：['4: 10次', '0: 8次', '2: 7次', '8: 7次', '5: 5次', '3: 5次', '1: 5次', '9: 5次', '7: 4次', '6: 4次']</p>
+            
+            <h3>4、“往月今日”数字频率：</h3>
+            <p>频率排序：8,2,5,0,7,3,1,6,4,9</p>
+            <p>频率次数：['8: 91次', '2: 83次', '5: 78次', '0: 76次', '7: 73次', '3: 70次', '1: 69次', '6: 66次', '4: 63次', '9: 54次']</p>
+            
+            <h3>5、“以往同周”数字频率：</h3>
+            <p>频率排序：6,8,7,4,2,0,1,5,9,3</p>
+            <p>频率次数：['6: 350次', '8: 347次', '7: 327次', '4: 323次', '2: 317次', '0: 315次', '1: 300次', '5: 299次', '9: 293次', '3: 285次']</p>
+            
+            <h2>三、历史开奖号码简报</h2>
+            <h3>1、最近5期开奖号码统计：</h3>
+            <p>2025-08-04 - 开奖号码：4,4,4<br>2025-08-03 - 开奖号码：9,2,0<br>2025-08-02 - 开奖号码：0,0,7<br>2025-08-01 - 开奖号码：0,1,3<br>2025-07-31 - 开奖号码：9,5,3</p>
+            
+            <h3>2、往年今日开奖号码统计：</h3>
+            <p>2005-08-05 - 开奖号码：0,7,4<br>2006-08-05 - 开奖号码：4,5,0<br>2007-08-05 - 开奖号码：6,0,7<br>2008-08-05 - 开奖号码：2,8,0<br>2009-08-05 - 开奖号码：3,0,4<br>2010-08-05 - 开奖号码：8,2,8<br>2011-08-05 - 开奖号码：5,4,0<br>2012-08-05 - 开奖号码：8,4,3<br>2013-08-05 - 开奖号码：1,3,9<br>2014-08-05 - 开奖号码：1,9,4<br>2015-08-05 - 开奖号码：5,0,8<br>2016-08-05 - 开奖号码：6,3,4<br>2017-08-05 - 开奖号码：2,5,6<br>2018-08-05 - 开奖号码：8,2,9<br>2019-08-05 - 开奖号码：3,7,1<br>2020-08-05 - 开奖号码：9,6,5<br>2021-08-05 - 开奖号码：1,4,4<br>2022-08-05 - 开奖号码：0,9,7<br>2023-08-05 - 开奖号码：2,4,2<br>2024-08-05 - 开奖号码：2,8,1</p>
+        </div>
+    </body>
+    </html>
+    
