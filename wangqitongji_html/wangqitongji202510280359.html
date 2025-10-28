@@ -1,0 +1,88 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TrendHunter Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1, h2, h3 { color: #333; }
+            ul { padding-left: 20px; }
+            p, li { line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; }
+            .container { max-width: 800px; margin: auto; }
+            .highlight { background-color: #f0f8ff; padding: 10px; border-radius: 5px; }
+            #passwordBox { margin-top: 50px; text-align: center; }
+            #passwordInput { padding: 10px; font-size: 16px; width: 200px; margin-bottom: 10px; }
+            #errorMessage { color: red; display: none; }
+        </style>
+        <script>
+            function checkPassword() {
+                let inputPassword = document.getElementById('passwordInput').value;
+                if (inputPassword !== "6") {
+                    document.getElementById('errorMessage').style.display = 'block';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('report-content').style.display = 'block';
+                    document.getElementById('passwordBox').style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="passwordBox">
+            <h2>请输入密码以查看内容：</h2>
+            <input type="password" id="passwordInput" placeholder="输入密码">
+            <br>
+            <button onclick="checkPassword()">确认</button>
+            <p id="errorMessage">密码错误！请重试。</p>
+        </div>
+        
+        <div id="report-content" class="container" style="display: none;">
+            <h1>推算报告</h1>
+            <p>今日日期：2025-10-28</p>
+            <p>所属月份：10</p>
+            <p>所属星期几：周二</p>
+            <p>上期开奖号码：[8, 2, 7]</p>
+            
+            <h2>一、推算下期开奖号码结果：</h2>
+            <ul>
+                <li>近5期推算：2,1,9</li>
+                <li>往年今日推算：6,4,2</li>
+                <li>往月今日推算：2,9,6</li>
+                <li>以往同周推算：3,9,1</li>
+                <li>历史数位： 738,735,739,758,755,759,748,745,749,938,935,939,958,955,959,948,945,949,038,035,039,058,055,059,048,045,049</li>
+            </ul>
+            
+            <h2>二、历史统计简报数据</h2>
+            <h3>1、根据上期号码的历史数字位置统计</h3>
+            <p class="highlight">百位预测：['7: 87次', '9: 78次', '0: 78次']</p>
+            <p class="highlight">十位预测：['3: 86次', '5: 76次', '4: 73次']</p>
+            <p class="highlight">个位预测：['8: 107次', '5: 81次', '9: 79次']</p>
+            
+            <h3>2、“最近5期”数字频率：</h3>
+            <p>频率排序：4,8,6,7,2,1,9</p>
+            <p>频率次数：['4: 4次', '8: 3次', '6: 3次', '7: 2次', '2: 1次', '1: 1次', '9: 1次']</p>
+            
+            <h3>3、“往年今日”数字频率：</h3>
+            <p>频率排序：0,7,8,3,1,5,9,2,6,4</p>
+            <p>频率次数：['0: 9次', '7: 9次', '8: 8次', '3: 8次', '1: 7次', '5: 6次', '9: 6次', '2: 4次', '6: 3次', '4: 3次']</p>
+            
+            <h3>4、“往月今日”数字频率：</h3>
+            <p>频率排序：3,8,1,5,7,0,4,6,9,2</p>
+            <p>频率次数：['3: 94次', '8: 77次', '1: 76次', '5: 74次', '7: 73次', '0: 70次', '4: 70次', '6: 69次', '9: 66次', '2: 63次']</p>
+            
+            <h3>5、“以往同周”数字频率：</h3>
+            <p>频率排序：6,8,7,4,2,0,5,9,1,3</p>
+            <p>频率次数：['6: 354次', '8: 347次', '7: 328次', '4: 327次', '2: 322次', '0: 319次', '5: 304次', '9: 302次', '1: 302次', '3: 287次']</p>
+            
+            <h2>三、历史开奖号码简报</h2>
+            <h3>1、最近5期开奖号码统计：</h3>
+            <p>2025-10-27 - 开奖号码：8,2,7<br>2025-10-25 - 开奖号码：8,4,4<br>2025-10-24 - 开奖号码：6,6,4<br>2025-10-23 - 开奖号码：4,1,6<br>2025-10-22 - 开奖号码：8,9,7</p>
+            
+            <h3>2、往年今日开奖号码统计：</h3>
+            <p>2004-10-28 - 开奖号码：6,0,7<br>2005-10-28 - 开奖号码：8,3,3<br>2006-10-28 - 开奖号码：4,5,2<br>2007-10-28 - 开奖号码：3,2,1<br>2008-10-28 - 开奖号码：8,0,8<br>2009-10-28 - 开奖号码：9,6,0<br>2010-10-28 - 开奖号码：0,9,0<br>2011-10-28 - 开奖号码：7,1,7<br>2012-10-28 - 开奖号码：1,0,3<br>2013-10-28 - 开奖号码：1,9,8<br>2014-10-28 - 开奖号码：0,8,1<br>2015-10-28 - 开奖号码：6,2,8<br>2016-10-28 - 开奖号码：7,8,9<br>2017-10-28 - 开奖号码：7,5,7<br>2018-10-28 - 开奖号码：5,3,7<br>2019-10-28 - 开奖号码：7,1,5<br>2020-10-28 - 开奖号码：7,0,4<br>2021-10-28 - 开奖号码：4,5,3<br>2022-10-28 - 开奖号码：5,1,2<br>2023-10-28 - 开奖号码：3,0,9<br>2024-10-28 - 开奖号码：8,3,9</p>
+        </div>
+    </body>
+    </html>
+    
