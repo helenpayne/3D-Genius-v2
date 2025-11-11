@@ -143,33 +143,33 @@ if data.get("result") and data["result"].get("data"):
     for to_user in to_users:
         template_data = {
             "to_user": to_user,
-            "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",  # 去掉逗号，确保是字符串
+            "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",
             "data": {
-                "thing4": open_date + "-开奖信息",
-                "thing31": ','.join(open_results),
-                "thing40": f"上期({last_issue['期号']}):{last_issue['开奖号码']}" if last_issue is not None else "上期号码: 无",
-                "thing5": f"上上期({second_last_issue['期号']}):{second_last_issue['开奖号码']}" if second_last_issue is not None else "上上期号码: 无",
-                "remark": "点击查看详情: test"
+                "thing4": {"value": open_date + "-开奖信息"},
+                "thing31": {"value": ','.join(open_results)},
+                "thing40": {"value": f"上期({last_issue['期号']}):{last_issue['开奖号码']}" if last_issue is not None else "上期号码: 无"},
+                "thing5": {"value": f"上上期({second_last_issue['期号']}):{second_last_issue['开奖号码']}" if second_last_issue is not None else "上上期号码: 无"},
+                "time21": {"value": f"{open_date} 12:00"},
+                "remark": {"value": "点击查看详情: test"}
             },
-            "url": "https://3d.13982.com/",
-            "url_params": {
-                "order_id": "395248",
-                "user": "苏"
-            }
+            "url": "https://3d.13982.com/"
         }
 
         # 发送 POST 请求
         try:
-            url = "http://wx.msg.13982.com/send_template"
+            url = "http://wx.msg.13982.com/send"
             headers = {
                 "Content-Type": "application/json",
-                "x-api-key": "sw63828"
+                "X-API-Key": "sw63828"
             }
             response = requests.post(url, headers=headers, data=json.dumps(template_data))
             response.raise_for_status()
             response_json = response.json()
-            print(f"模板消息已发送至用户 {to_user}，响应状态码: {response.status_code}")
-            print(f"响应内容: {json.dumps(response_json, ensure_ascii=False, indent=2)}")
+            if response_json.get("success") == True:
+                print(f"模板消息已发送至用户 {to_user}，响应状态码: {response.status_code}")
+                print(f"响应内容: {json.dumps(response_json, ensure_ascii=False, indent=2)}")
+            else:
+                print(f"模板消息发送失败至用户 {to_user}，响应: {response.text}")
         except requests.exceptions.RequestException as e:
             print(f"发送给用户 {to_user} 时失败: {e}")
         except ValueError:

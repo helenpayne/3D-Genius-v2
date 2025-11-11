@@ -181,33 +181,33 @@ to_users = ["oXUv66MibUi7VInLBf7AHqMIY438", "oXUv66DvDIoQG39Vnspwj97QVLn4", "oXU
 for to_user in to_users:
     template_data = {
         "to_user": to_user,
-        "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",  # 去掉逗号，确保是字符串
+        "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",
         "data": {
-            "thing4": f"{today_date}-模型分析结果",
-            "thing31": f"模型结果({round(next_prediction_ge)},{round(next_prediction_shi)},{round(next_prediction_bai)})",
-            "thing40": f"模型评分({round(rmse_ge, 2)},{round(rmse_shi, 2)},{round(rmse_bai, 2)})",
-            "thing5": "频值-" + ",".join(map(str, sorted_numbers)),
-            "remark": "点击查看详情: test"
+            "thing4": {"value": f"{today_date}-模型分析结果"},
+            "thing31": {"value": f"模型结果({round(next_prediction_ge)},{round(next_prediction_shi)},{round(next_prediction_bai)})"},
+            "thing40": {"value": f"模型评分({round(rmse_ge, 2)},{round(rmse_shi, 2)},{round(rmse_bai, 2)})"},
+            "thing5": {"value": "频值-" + ",".join(map(str, sorted_numbers))},
+            "time21": {"value": f"{today_date} 12:00"},
+            "remark": {"value": "点击查看详情: test"}
         },
-        "url": "https://3d.13982.com/",
-        "url_params": {
-            "order_id": "395248",
-            "user": "苏"
-        }
+        "url": "https://3d.13982.com/"
     }
 
     # 发送 POST 请求
     try:
-        url = "http://wx.msg.13982.com/send_template"
+        url = "http://wx.msg.13982.com/send"
         headers = {
             "Content-Type": "application/json",
-            "x-api-key": "sw63828"
+            "X-API-Key": "sw63828"
         }
         response = requests.post(url, headers=headers, data=json.dumps(template_data))
         response.raise_for_status()
         response_json = response.json()
-        print(f"模板消息已发送至用户 {to_user}，响应状态码: {response.status_code}")
-        print(f"响应内容: {json.dumps(response_json, ensure_ascii=False, indent=2)}")
+        if response_json.get("success") == True:
+            print(f"模板消息已发送至用户 {to_user}，响应状态码: {response.status_code}")
+            print(f"响应内容: {json.dumps(response_json, ensure_ascii=False, indent=2)}")
+        else:
+            print(f"模板消息发送失败至用户 {to_user}，响应: {response.text}")
     except requests.exceptions.RequestException as e:
         print(f"发送给用户 {to_user} 时失败: {e}")
     except ValueError:

@@ -82,10 +82,10 @@ if __name__ == "__main__":
     try:
         results = analyze_and_predict_lottery_data(file_path)
         today_date = now.strftime('%Y-%m-%d')
-        url = "http://wx.msg.13982.com/send_template"
+        url = "http://wx.msg.13982.com/send"
         headers = {
             "Content-Type": "application/json",
-            "x-api-key": "sw63828"
+            "X-API-Key": "sw63828"
         }
 
         to_users = [
@@ -94,29 +94,33 @@ if __name__ == "__main__":
             "oXUv66HUVNyZ0Hd8RWKmkVV1dkAs"
         ]
 
-        common_data = {
-            "data": {
-                "thing4": f"{today_date}-订单计划数据",
-                "thing31": f"今天推算：{','.join(map(str, results['predicted_numbers']))}",
-                "thing40": f"昨天数据：{','.join(map(str, results['latest_draw_numbers']))}",
-                "thing5": f"上期双子：已{results['days_since_pair']}天, {','.join(map(str, results['latest_pair_draw_numbers']))}",
-                "remark": "点击查看详情",
-            },
-            "url": "https://3d.13982.com/"
-        }
-
         for user_id in to_users:
             data = {
-                "template_id":"nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",  # 去掉逗号，确保是字符串
+                "template_id":"nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",
                 "to_user": user_id,
-                **common_data
+                "url": "https://3d.13982.com/",
+                "data": {
+                    "thing4": {"value": f"{today_date}-订单计划数据"},
+                    "thing31": {"value": f"今天推算：{','.join(map(str, results['predicted_numbers']))}"},
+                    "thing40": {"value": f"昨天数据：{','.join(map(str, results['latest_draw_numbers']))}"},
+                    "thing5": {"value": f"上期双子：已{results['days_since_pair']}天, {','.join(map(str, results['latest_pair_draw_numbers']))}"},
+                    "time21": {"value": f"{today_date} 12:00"},
+                    "remark": {"value": "点击查看详情"}
+                }
             }
 
             response = requests.post(url, headers=headers, data=json.dumps(data))
-            if response.status_code == 200:
-                print(f"消息成功发送给用户 {user_id}")
-            else:
-                print(f"HTTP错误 {response.status_code} 发送给用户 {user_id}: {response.text}")
+            try:
+                response_data = response.json()
+                if response_data.get("success") == True:
+                    print(f"消息成功发送给用户 {user_id}")
+                else:
+                    print(f"消息发送失败，用户 {user_id}: {response.text}")
+            except:
+                if response.status_code == 200:
+                    print(f"消息成功发送给用户 {user_id}")
+                else:
+                    print(f"HTTP错误 {response.status_code} 发送给用户 {user_id}: {response.text}")
 
     except Exception as e:
         print(f"运行脚本时出错: {e}")

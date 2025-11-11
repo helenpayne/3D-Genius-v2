@@ -204,6 +204,7 @@ thing31 = predict_based_on_lowest_frequency(same_day_frequency, "往年今日")
 thing40 = predict_based_on_lowest_frequency(same_day_in_months_frequency, "往月今日")
 thing5 = predict_based_on_lowest_frequency(last_week_frequency, "以往同周")
 remark = ', '.join(predicted_numbers)  # 这部分可以保留，因为 predicted_numbers 是列表
+time21 = f"{today_date} 12:00"  # 添加时间字段
 t_url = f"https://3d.13982.com/" + report_path.replace("\\", "/")
 t_url = t_url.replace(".html", "")
 
@@ -212,32 +213,30 @@ print(f"thing31: {thing31}")
 print(f"thing40: {thing40}")
 print(f"thing5: {thing5}")
 print(f"remark: {remark}")
+print(f"time21: {time21}")
 print(f"t_url: {t_url}")
 
 
-url = "http://wx.msg.13982.com/send_template"
+url = "http://wx.msg.13982.com/send"
 to_users = ["oXUv66MibUi7VInLBf7AHqMIY438", "oXUv66DvDIoQG39Vnspwj97QVLn4", "oXUv66HUVNyZ0Hd8RWKmkVV1dkAs"]
 
 for to_user in to_users:
     while True:
         payload = json.dumps({
             "to_user": to_user,
-            "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",  # 去掉逗号，确保是字符串
+            "template_id" : "nyQ-0vYb0bl5EZWT2OK8jX46NNsnrzWXxminYjO2Y8A",
             "data": {
-                "thing4": thing4,
-                "thing31": thing31,
-                "thing40": thing40,
-                "thing5": thing5,
-                "remark": remark
-            },
-            "url_params": {
-                "order_id": "395248",
-                "user": "苏"
+                "thing4": {"value": thing4},
+                "thing31": {"value": thing31},
+                "thing40": {"value": thing40},
+                "thing5": {"value": thing5},
+                "time21": {"value": time21},
+                "remark": {"value": remark}
             },
             "url": t_url
         })
         headers = {
-            'x-api-key': 'sw63828',
+            'X-API-Key': 'sw63828',
             'User-Agent': 'github/actions',
             'Content-Type': 'application/json'
         }
@@ -248,7 +247,7 @@ for to_user in to_users:
         # 解析 response.text 并检查 status
         try:
             response_data = json.loads(response.text)
-            if response_data.get("status") == "success":
+            if response_data.get("success") == True:
                 print(f"消息发送成功给用户 {to_user}")
                 break  # 跳出循环，发送下一个用户
             else:
