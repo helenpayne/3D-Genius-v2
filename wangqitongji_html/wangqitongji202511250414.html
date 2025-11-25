@@ -1,0 +1,88 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TrendHunter Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1, h2, h3 { color: #333; }
+            ul { padding-left: 20px; }
+            p, li { line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; }
+            .container { max-width: 800px; margin: auto; }
+            .highlight { background-color: #f0f8ff; padding: 10px; border-radius: 5px; }
+            #passwordBox { margin-top: 50px; text-align: center; }
+            #passwordInput { padding: 10px; font-size: 16px; width: 200px; margin-bottom: 10px; }
+            #errorMessage { color: red; display: none; }
+        </style>
+        <script>
+            function checkPassword() {
+                let inputPassword = document.getElementById('passwordInput').value;
+                if (inputPassword !== "6") {
+                    document.getElementById('errorMessage').style.display = 'block';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('report-content').style.display = 'block';
+                    document.getElementById('passwordBox').style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="passwordBox">
+            <h2>请输入密码以查看内容：</h2>
+            <input type="password" id="passwordInput" placeholder="输入密码">
+            <br>
+            <button onclick="checkPassword()">确认</button>
+            <p id="errorMessage">密码错误！请重试。</p>
+        </div>
+        
+        <div id="report-content" class="container" style="display: none;">
+            <h1>推算报告</h1>
+            <p>今日日期：2025-11-25</p>
+            <p>所属月份：11</p>
+            <p>所属星期几：周二</p>
+            <p>上期开奖号码：[9, 1, 7]</p>
+            
+            <h2>一、推算下期开奖号码结果：</h2>
+            <ul>
+                <li>近5期推算：7,8,4</li>
+                <li>往年今日推算：5,6,0</li>
+                <li>往月今日推算：7,6,3</li>
+                <li>以往同周推算：3,9,1</li>
+                <li>历史数位： 848,845,849,878,875,879,888,885,889,348,345,349,378,375,379,388,385,389,548,545,549,578,575,579,588,585,589</li>
+            </ul>
+            
+            <h2>二、历史统计简报数据</h2>
+            <h3>1、根据上期号码的历史数字位置统计</h3>
+            <p class="highlight">百位预测：['8: 82次', '3: 79次', '5: 78次']</p>
+            <p class="highlight">十位预测：['4: 92次', '7: 92次', '8: 84次']</p>
+            <p class="highlight">个位预测：['8: 107次', '5: 82次', '9: 79次']</p>
+            
+            <h3>2、“最近5期”数字频率：</h3>
+            <p>频率排序：9,1,6,0,7,8,4</p>
+            <p>频率次数：['9: 4次', '1: 3次', '6: 3次', '0: 2次', '7: 1次', '8: 1次', '4: 1次']</p>
+            
+            <h3>3、“往年今日”数字频率：</h3>
+            <p>频率排序：8,9,4,7,3,1,5,6,0,2</p>
+            <p>频率次数：['8: 11次', '9: 10次', '4: 7次', '7: 7次', '3: 6次', '1: 6次', '5: 4次', '6: 4次', '0: 4次', '2: 4次']</p>
+            
+            <h3>4、“往月今日”数字频率：</h3>
+            <p>频率排序：8,4,9,1,5,0,2,3,7,6</p>
+            <p>频率次数：['8: 92次', '4: 81次', '9: 78次', '1: 75次', '5: 75次', '0: 75次', '2: 69次', '3: 67次', '7: 66次', '6: 66次']</p>
+            
+            <h3>5、“以往同周”数字频率：</h3>
+            <p>频率排序：6,8,7,4,2,0,5,1,9,3</p>
+            <p>频率次数：['6: 354次', '8: 348次', '7: 329次', '4: 329次', '2: 322次', '0: 319次', '5: 307次', '1: 303次', '9: 302次', '3: 288次']</p>
+            
+            <h2>三、历史开奖号码简报</h2>
+            <h3>1、最近5期开奖号码统计：</h3>
+            <p>2025-11-24 - 开奖号码：9,1,7<br>2025-11-22 - 开奖号码：6,8,9<br>2025-11-21 - 开奖号码：6,4,0<br>2025-11-20 - 开奖号码：1,6,9<br>2025-11-19 - 开奖号码：1,9,0</p>
+            
+            <h3>2、往年今日开奖号码统计：</h3>
+            <p>2004-11-25 - 开奖号码：3,3,9<br>2005-11-25 - 开奖号码：5,8,3<br>2006-11-25 - 开奖号码：6,4,1<br>2007-11-25 - 开奖号码：4,9,4<br>2008-11-25 - 开奖号码：1,0,6<br>2009-11-25 - 开奖号码：8,2,7<br>2010-11-25 - 开奖号码：5,7,8<br>2011-11-25 - 开奖号码：2,2,0<br>2012-11-25 - 开奖号码：8,8,9<br>2013-11-25 - 开奖号码：6,4,8<br>2014-11-25 - 开奖号码：9,7,4<br>2015-11-25 - 开奖号码：9,3,9<br>2016-11-25 - 开奖号码：8,7,7<br>2017-11-25 - 开奖号码：4,1,9<br>2018-11-25 - 开奖号码：1,3,0<br>2019-11-25 - 开奖号码：9,8,3<br>2020-11-25 - 开奖号码：1,0,2<br>2021-11-25 - 开奖号码：7,5,5<br>2022-11-25 - 开奖号码：8,9,4<br>2023-11-25 - 开奖号码：6,1,8<br>2024-11-25 - 开奖号码：7,8,9</p>
+        </div>
+    </body>
+    </html>
+    
