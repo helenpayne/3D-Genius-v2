@@ -1,0 +1,88 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TrendHunter Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1, h2, h3 { color: #333; }
+            ul { padding-left: 20px; }
+            p, li { line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; }
+            .container { max-width: 800px; margin: auto; }
+            .highlight { background-color: #f0f8ff; padding: 10px; border-radius: 5px; }
+            #passwordBox { margin-top: 50px; text-align: center; }
+            #passwordInput { padding: 10px; font-size: 16px; width: 200px; margin-bottom: 10px; }
+            #errorMessage { color: red; display: none; }
+        </style>
+        <script>
+            function checkPassword() {
+                let inputPassword = document.getElementById('passwordInput').value;
+                if (inputPassword !== "6") {
+                    document.getElementById('errorMessage').style.display = 'block';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('report-content').style.display = 'block';
+                    document.getElementById('passwordBox').style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="passwordBox">
+            <h2>请输入密码以查看内容：</h2>
+            <input type="password" id="passwordInput" placeholder="输入密码">
+            <br>
+            <button onclick="checkPassword()">确认</button>
+            <p id="errorMessage">密码错误！请重试。</p>
+        </div>
+        
+        <div id="report-content" class="container" style="display: none;">
+            <h1>推算报告</h1>
+            <p>今日日期：2025-12-11</p>
+            <p>所属月份：12</p>
+            <p>所属星期几：周四</p>
+            <p>上期开奖号码：[0, 6, 2]</p>
+            
+            <h2>一、推算下期开奖号码结果：</h2>
+            <ul>
+                <li>近5期推算：2,7,9</li>
+                <li>往年今日推算：0,7,5</li>
+                <li>往月今日推算：2,1,5</li>
+                <li>以往同周推算：5,0,4</li>
+                <li>历史数位： 497,491,493,417,411,413,487,481,483,097,091,093,017,011,013,087,081,083,997,991,993,917,911,913,987,981,983</li>
+            </ul>
+            
+            <h2>二、历史统计简报数据</h2>
+            <h3>1、根据上期号码的历史数字位置统计</h3>
+            <p class="highlight">百位预测：['4: 86次', '0: 82次', '9: 79次']</p>
+            <p class="highlight">十位预测：['9: 89次', '1: 88次', '8: 84次']</p>
+            <p class="highlight">个位预测：['7: 93次', '1: 80次', '3: 74次']</p>
+            
+            <h3>2、“最近5期”数字频率：</h3>
+            <p>频率排序：0,6,5,4,8,2,7,9,1</p>
+            <p>频率次数：['0: 3次', '6: 2次', '5: 2次', '4: 2次', '8: 2次', '2: 1次', '7: 1次', '9: 1次', '1: 1次']</p>
+            
+            <h3>3、“往年今日”数字频率：</h3>
+            <p>频率排序：6,2,8,4,9,3,7,5,1,0</p>
+            <p>频率次数：['6: 9次', '2: 8次', '8: 7次', '4: 7次', '9: 7次', '3: 6次', '7: 5次', '5: 5次', '1: 5次', '0: 4次']</p>
+            
+            <h3>4、“往月今日”数字频率：</h3>
+            <p>频率排序：8,9,7,6,0,3,4,5,1,2</p>
+            <p>频率次数：['8: 86次', '9: 80次', '7: 78次', '6: 78次', '0: 77次', '3: 73次', '4: 71次', '5: 70次', '1: 68次', '2: 57次']</p>
+            
+            <h3>5、“以往同周”数字频率：</h3>
+            <p>频率排序：1,6,9,3,7,2,8,4,0,5</p>
+            <p>频率次数：['1: 358次', '6: 339次', '9: 328次', '3: 317次', '7: 316次', '2: 316次', '8: 311次', '4: 310次', '0: 307次', '5: 299次']</p>
+            
+            <h2>三、历史开奖号码简报</h2>
+            <h3>1、最近5期开奖号码统计：</h3>
+            <p>2025-12-10 - 开奖号码：0,6,2<br>2025-12-09 - 开奖号码：5,6,4<br>2025-12-08 - 开奖号码：0,4,0<br>2025-12-07 - 开奖号码：7,8,9<br>2025-12-06 - 开奖号码：1,8,5</p>
+            
+            <h3>2、往年今日开奖号码统计：</h3>
+            <p>2004-12-11 - 开奖号码：3,7,8<br>2005-12-11 - 开奖号码：4,9,3<br>2006-12-11 - 开奖号码：9,0,0<br>2007-12-11 - 开奖号码：3,9,9<br>2008-12-11 - 开奖号码：4,5,2<br>2009-12-11 - 开奖号码：6,3,4<br>2010-12-11 - 开奖号码：6,9,3<br>2011-12-11 - 开奖号码：8,0,8<br>2012-12-11 - 开奖号码：2,9,4<br>2013-12-11 - 开奖号码：5,1,7<br>2014-12-11 - 开奖号码：6,6,8<br>2015-12-11 - 开奖号码：2,5,4<br>2016-12-11 - 开奖号码：2,6,2<br>2017-12-11 - 开奖号码：9,0,1<br>2018-12-11 - 开奖号码：1,7,8<br>2019-12-11 - 开奖号码：8,8,3<br>2020-12-11 - 开奖号码：5,6,6<br>2021-12-11 - 开奖号码：1,2,2<br>2022-12-11 - 开奖号码：7,4,6<br>2023-12-11 - 开奖号码：2,4,1<br>2024-12-11 - 开奖号码：7,6,5</p>
+        </div>
+    </body>
+    </html>
+    
